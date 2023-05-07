@@ -6,23 +6,9 @@ rofi-man - rofi-script to search for executables by their name or functionality
 
 =head1 SYNOPSIS
 
-rofi-man [B<--help>] file [B<section>]
+rofi-man [B<--help>] [B<--test>] [file] [B<section>]
 
-=head1 PREREQUISITES
-
-=over
-
-=item * B<rofi> needed to work albiet the script on it's own I<can be used> but I<may not be useful>.
-
-=item * B<whatis>
-
-=item * B<man>
-
-=item * terminal emulator like B<kitty>, B<konsole>, B<urxvt>...
-
-=back
-
-
+B<file> is any executable available that has a man page.
 
 =head1 DESCRIPTION
 
@@ -32,9 +18,13 @@ B<rofi-man> is best used with B<rofi> as a B<rofi-script>. The simple idea behin
 
 =over
 
-=item B<-h>, B<--help>
+=item B<-h>
 
-use B<man rofi-man> to use find out how to use it
+Show the help section on how to use `rofi-man`
+
+=item B<-t>
+
+Returns the `man` compliant argument given to this script. Important for testing.
 
 =back
 
@@ -49,6 +39,20 @@ bindsym $mod+m exec --no-startup-id rofi -show man -modes "man:rofi-man" -matchi
 =item B<use-in-shell>
 
 rofi -show man -modes "man:rofi-man" -matching regex -tokenize
+
+=back
+
+=head1 PREREQUISITES
+
+=over
+
+=item * B<rofi> needed to work albiet the script on it's own I<can be used> but I<may not be useful>.
+
+=item * B<whatis>
+
+=item * B<man>
+
+=item * terminal emulator like B<kitty>, B<konsole>, B<urxvt>...
 
 =back
 

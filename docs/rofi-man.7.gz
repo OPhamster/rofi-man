@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "ROFI-MAN 7"
-.TH ROFI-MAN 7 "2023-05-04" "0.1" "ROFI-MAN"
+.TH ROFI-MAN 7 "2023-05-07" "0.1" "ROFI-MAN"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -142,7 +142,28 @@
 rofi\-man \- rofi\-script to search for executables by their name or functionality
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
-rofi-man [\fB\-\-help\fR] file [\fBsection\fR]
+rofi-man [\fB\-\-help\fR] [\fB\-\-test\fR] [file] [\fBsection\fR]
+.PP
+\&\fBfile\fR is any executable available that has a man page.
+.SH "DESCRIPTION"
+.IX Header "DESCRIPTION"
+\&\fBrofi-man\fR is best used with \fBrofi\fR as a \fBrofi-script\fR. The simple idea behind this is that it natural to search for executables by either their names(if they're named appropriately) \s-1OR\s0 from their advertised functionality in their short descriptions.
+.SH "OPTIONS"
+.IX Header "OPTIONS"
+.IP "\fB\-h\fR" 4
+.IX Item "-h"
+Show the help section on how to use `rofi\-man`
+.IP "\fB\-t\fR" 4
+.IX Item "-t"
+Returns the `man` compliant argument given to this script. Important for testing.
+.SH "EXAMPLES"
+.IX Header "EXAMPLES"
+.IP "\fBuse\-with\-i3\fR" 4
+.IX Item "use-with-i3"
+bindsym \f(CW$mod\fR+m exec \-\-no\-startup\-id rofi \-show man \-modes \*(L"man:rofi\-man\*(R" \-matching regex \-tokenize
+.IP "\fBuse-in-shell\fR" 4
+.IX Item "use-in-shell"
+rofi \-show man \-modes \*(L"man:rofi\-man\*(R" \-matching regex \-tokenize
 .SH "PREREQUISITES"
 .IX Header "PREREQUISITES"
 .IP "\(bu" 4
@@ -153,22 +174,6 @@ rofi-man [\fB\-\-help\fR] file [\fBsection\fR]
 \&\fBman\fR
 .IP "\(bu" 4
 terminal emulator like \fBkitty\fR, \fBkonsole\fR, \fBurxvt\fR...
-.SH "DESCRIPTION"
-.IX Header "DESCRIPTION"
-\&\fBrofi-man\fR is best used with \fBrofi\fR as a \fBrofi-script\fR. The simple idea behind this is that it natural to search for executables by either their names(if they're named appropriately) \s-1OR\s0 from their advertised functionality in their short descriptions.
-.SH "OPTIONS"
-.IX Header "OPTIONS"
-.IP "\fB\-h\fR, \fB\-\-help\fR" 4
-.IX Item "-h, --help"
-use \fBman rofi-man\fR to use find out how to use it
-.SH "EXAMPLES"
-.IX Header "EXAMPLES"
-.IP "\fBuse\-with\-i3\fR" 4
-.IX Item "use-with-i3"
-bindsym \f(CW$mod\fR+m exec \-\-no\-startup\-id rofi \-show man \-modes \*(L"man:rofi\-man\*(R" \-matching regex \-tokenize
-.IP "\fBuse-in-shell\fR" 4
-.IX Item "use-in-shell"
-rofi \-show man \-modes \*(L"man:rofi\-man\*(R" \-matching regex \-tokenize
 .SH "SEE ALSO"
 .IX Header "SEE ALSO"
 \&\fB\fBwhatis\fB\|(1)\fR, \fB\fBapropos\fB\|(1)\fR, \fB\fBman\fB\|(1)\fR, \fB\fBrofi\fB\|(1)\fR, \fB\fBrofi\-script\fB\|(5)\fR
