@@ -15,7 +15,7 @@ exec_with_term() {
                  ;;
         xterm) coproc ( xterm -T "man $@" -e man $@ && exit >/dev/null 2>&1 )
                ;;
-        *) rofi-sensible-terminal $@
+        *) coproc ( rofi-sensible-terminal -e man $@ && exit >/dev/null 2>&1 )
            ;;
     esac
 }
