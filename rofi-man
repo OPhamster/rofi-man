@@ -3,8 +3,6 @@
 DESCRIPTION="Search for executable by their name or functionality"
 # echo "export MAN_TERM=<preferred_terminal>" >> ~/.profile
 
-echo -en "\0message\x1f$DESCRIPTION\n"
-
 exec_with_term() {
     # NOTE: `coproc` is suggested in `man rofi-script`
     # NOTE: The exit is there to make the terminal window a single use window
@@ -43,8 +41,33 @@ strip_selection() {
     echo $@ | grep -E '^(([[:alnum:]])+([-_][[:alnum:]]+)* (\([0-9]+\))*)' -o | sed -E s/\ //
 }
 
+show_help() {
+    echo "Usage: rofi-man [-h|t] file [section]"
+    echo "Shows this help section"
+    echo "options:"
+    echo
+    echo "  h  Print this help section"
+    echo "  t  Generate a 'man' compliant argument from the input."\
+         "Usually the input is generated from 'whatis'"
+    echo
+}
+
 if [ $# == 0 ]; then
+    # for the `rofi` prompt
+    echo -en "\0message\x1f$DESCRIPTION\n"
     list_manpages
 else
+    while getopts "ht:" option; do
+        case $option in
+                h) show_help && exit
+                ;;
+                t) strip_selection $OPTARG && exit
+                ;;
+                \?) echo "Error: Invalid option" && exit 1
+                ;;
+        esac
+    done
+    # for the `rofi` prompt
+    echo -en "\0message\x1f$DESCRIPTION\n"
     show_manpage $(strip_selection $1)
 fi
