@@ -11,6 +11,7 @@ rofi-man - rofi-script to search for executables by their name or functionality
     - [The Problem](#the-problem)
     - [An Alternative](#an-alternative)
     - [What about other solutions ?](#what-about-other-solutions-)
+    - [INSTALL](#install)
 
 <!-- markdown-toc end -->
 
